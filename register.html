@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Join ECA – Ethiopian Cadet Association</title>
+  <link rel="stylesheet" href="../css/style.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Barlow:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    .register-layout{display:grid;grid-template-columns:1fr 1.8fr;gap:50px;align-items:start}
+    .benefits-col{}
+    .benefit-item{display:flex;gap:14px;align-items:flex-start;padding:18px 0;border-bottom:1px solid #e8ecf0}
+    .benefit-item:last-child{border-bottom:none}
+    .benefit-icon{width:42px;height:42px;border-radius:10px;background:linear-gradient(135deg,var(--navy),var(--blue));display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0}
+    .benefit-body h4{font-size:15px;font-weight:700;color:var(--navy);margin-bottom:3px}
+    .benefit-body p{font-size:13px;color:#6a7a8a}
+    .member-types{display:flex;gap:12px;margin-bottom:36px;flex-wrap:wrap}
+    .mtype-btn{flex:1;min-width:140px;padding:16px 14px;border-radius:10px;border:2px solid #d8dde6;background:white;cursor:pointer;transition:var(--transition);text-align:center;font-family:var(--font-body)}
+    .mtype-btn.selected{border-color:var(--navy);background:var(--navy)}
+    .mtype-icon{font-size:26px;display:block;margin-bottom:6px}
+    .mtype-label{font-size:13px;font-weight:700;color:var(--navy)}
+    .mtype-btn.selected .mtype-label{color:var(--gold)}
+    .mtype-desc{font-size:11px;color:var(--gray);margin-top:3px}
+    .mtype-btn.selected .mtype-desc{color:rgba(248,246,240,0.6)}
+    .step-indicator{display:flex;align-items:center;margin-bottom:32px;gap:0}
+    .step-dot{width:32px;height:32px;border-radius:50%;background:#e0e4ec;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;color:#8a9ab5;transition:var(--transition);flex-shrink:0}
+    .step-dot.active{background:var(--navy);color:var(--gold)}
+    .step-dot.done{background:var(--gold);color:var(--navy)}
+    .step-line{flex:1;height:2px;background:#e0e4ec}
+    .step-line.done{background:var(--gold)}
+    .form-step{display:none}.form-step.active{display:block}
+    .step-nav{display:flex;justify-content:space-between;margin-top:28px;gap:12px}
+    .success-screen{text-align:center;padding:48px 24px;display:none}
+    .success-screen .success-icon{font-size:80px;margin-bottom:20px}
+    .success-screen h3{font-family:var(--font-display);font-size:32px;color:var(--navy);margin-bottom:12px}
+    .success-screen p{font-size:16px;color:#5a6a7a;max-width:480px;margin:0 auto 28px}
+    @media(max-width:900px){.register-layout{grid-template-columns:1fr}.member-types{flex-direction:row}}
+  </style>
+</head>
+<body>
+<nav class="navbar" id="navbar">
+  <div class="nav-container">
+    <a href="../index.html" class="logo"><span class="logo-icon">⚓</span><div class="logo-text"><span class="logo-main">ECA</span><span class="logo-sub">Ethiopian Cadet Association</span></div></a>
+    <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="../index.html">Home</a></li><li><a href="about.html">About</a></li>
+      <li><a href="training.html">Training</a></li><li><a href="courses.html">Courses</a></li>
+      <li><a href="financial.html">Financial Support</a></li><li><a href="news.html">News</a></li>
+      <li><a href="events.html">Events</a></li><li><a href="contact.html">Contact</a></li>
+      <li><a href="register.html" class="nav-cta">Join Us</a></li>
+    </ul>
+  </div>
+</nav>
+
+<section class="page-hero">
+  <div class="container">
+    <span class="page-hero-tag">Free Membership</span>
+    <h1>Join the Ethiopian Cadet Association</h1>
+    <p>Become part of Ethiopia's maritime community. Access training, scholarships, job opportunities, and professional mentorship — all in one place.</p>
+  </div>
+</section>
+
+<section class="page-content">
+  <div class="container">
+    <div class="register-layout">
+
+      <!-- BENEFITS -->
+      <div class="fade-in">
+        <span class="section-tag">Why Join ECA?</span>
+        <h2 style="font-family:var(--font-display);font-size:28px;margin-bottom:24px;line-height:1.2;">Everything You Need for Your Maritime Career</h2>
+        <div class="benefit-item"><div class="benefit-icon">🎓</div><div class="benefit-body"><h4>Expert-Taught Online Courses</h4><p>Access marine engineering courses by senior experts, earn certificates, and advance your rank.</p></div></div>
+        <div class="benefit-item"><div class="benefit-icon">💰</div><div class="benefit-body"><h4>Scholarship Applications</h4><p>Apply for open scholarships, track deadlines, and get notified about new funding opportunities.</p></div></div>
+        <div class="benefit-item"><div class="benefit-icon">💼</div><div class="benefit-body"><h4>Between-Contract Job Board</h4><p>Find short-term work in Ethiopia during your contract gap. Stay employed, stay active.</p></div></div>
+        <div class="benefit-item"><div class="benefit-icon">📈</div><div class="benefit-body"><h4>Career Progression Tracker</h4><p>Track your sea service, promotions, and every step from Cadet to Chief Engineer.</p></div></div>
+        <div class="benefit-item"><div class="benefit-icon">📅</div><div class="benefit-body"><h4>Event Access & Discounts</h4><p>Priority registration and member discounts for all ECA conferences, workshops, and webinars.</p></div></div>
+        <div class="benefit-item"><div class="benefit-icon">🌍</div><div class="benefit-body"><h4>Global Professional Network</h4><p>Connect with 500+ Ethiopian maritime professionals in 20+ countries around the world.</p></div></div>
+
+        <div style="background:var(--light-bg);border-radius:12px;padding:24px;margin-top:28px">
+          <p style="font-size:14px;color:#5a6a7a;margin-bottom:0">🔒 <strong>Your data is safe.</strong> ECA does not share your personal information with third parties. Membership information is used solely for association services.</p>
+        </div>
+      </div>
+
+      <!-- REGISTRATION FORM -->
+      <div class="fade-in">
+        <div class="form-wrapper">
+
+          <!-- Member Type Selection -->
+          <div class="form-title">Create Your Free Account</div>
+          <div class="form-subtitle">Choose your membership type to get started.</div>
+
+          <div class="member-types" id="memberTypes">
+            <button class="mtype-btn selected" onclick="selectType(this,'cadet')"><span class="mtype-icon">⚓</span><span class="mtype-label">Cadet / Officer</span><span class="mtype-desc">Currently training or at sea</span></button>
+            <button class="mtype-btn" onclick="selectType(this,'expert')"><span class="mtype-icon">👨‍🏫</span><span class="mtype-label">Expert / Instructor</span><span class="mtype-desc">Post courses & mentor cadets</span></button>
+            <button class="mtype-btn" onclick="selectType(this,'company')"><span class="mtype-icon">🏢</span><span class="mtype-label">Company</span><span class="mtype-desc">Post vacancies & hire talent</span></button>
+          </div>
+
+          <!-- Step Indicator -->
+          <div class="step-indicator">
+            <div class="step-dot active" id="dot1">1</div>
+            <div class="step-line" id="line1"></div>
+            <div class="step-dot" id="dot2">2</div>
+            <div class="step-line" id="line2"></div>
+            <div class="step-dot" id="dot3">3</div>
+          </div>
+
+          <form id="regForm">
+
+            <!-- Step 1: Personal Info -->
+            <div class="form-step active" id="step1">
+              <h4 style="font-family:var(--font-display);font-size:18px;margin-bottom:20px;color:var(--navy)">Step 1 — Personal Information</h4>
+              <div class="form-row">
+                <div class="form-group"><label>First Name *</label><input type="text" placeholder="Abebe" required/></div>
+                <div class="form-group"><label>Last Name *</label><input type="text" placeholder="Tadesse" required/></div>
+              </div>
+              <div class="form-group"><label>Email Address *</label><input type="email" placeholder="abebe@email.com" required/></div>
+              <div class="form-group"><label>Phone Number</label><input type="tel" placeholder="+251 9xx xxx xxx"/></div>
+              <div class="form-row">
+                <div class="form-group"><label>Date of Birth</label><input type="date"/></div>
+                <div class="form-group"><label>Nationality *</label><input type="text" value="Ethiopian"/></div>
+              </div>
+              <div class="form-group"><label>City / Region</label><input type="text" placeholder="Addis Ababa"/></div>
+              <div class="step-nav"><div></div><button type="button" class="btn btn-primary" onclick="nextStep(2)">Next: Maritime Details →</button></div>
+            </div>
+
+            <!-- Step 2: Maritime Info -->
+            <div class="form-step" id="step2">
+              <h4 style="font-family:var(--font-display);font-size:18px;margin-bottom:20px;color:var(--navy)">Step 2 — Maritime Background</h4>
+              <div class="form-group">
+                <label>Current Rank / Position *</label>
+                <select required>
+                  <option value="">— Select your rank —</option>
+                  <option>Cadet / Trainee</option>
+                  <option>4th Engineer</option>
+                  <option>3rd Engineer</option>
+                  <option>2nd Engineer</option>
+                  <option>Chief Engineer</option>
+                  <option>Electro-Technical Officer</option>
+                  <option>Instructor / Trainer</option>
+                  <option>Superintendent</option>
+                  <option>Other</option>
+                </select>
+              </div>
+              <div class="form-row">
+                <div class="form-group"><label>Years of Sea Service</label><input type="number" placeholder="0" min="0"/></div>
+                <div class="form-group"><label>Vessel Type (if applicable)</label><select><option>Not yet at sea</option><option>Bulk Carrier</option><option>Container Ship</option><option>Tanker</option><option>Gas Carrier</option><option>General Cargo</option><option>Other</option></select></div>
+              </div>
+              <div class="form-group">
+                <label>Current Status *</label>
+                <select>
+                  <option>Currently in Training (Pre-Sea)</option>
+                  <option>Currently On Board Ship</option>
+                  <option>Currently at Home (Between Contracts)</option>
+                  <option>Looking for First Contract</option>
+                  <option>Shore-Based (Instructor/Office)</option>
+                </select>
+              </div>
+              <div class="form-group"><label>Highest Maritime Certificate</label><input type="text" placeholder="e.g. STCW BST, COC OOW, etc."/></div>
+              <div class="form-group"><label>What brought you to ECA? (Optional)</label><textarea rows="3" placeholder="Tell us a bit about yourself and what you are looking for..."></textarea></div>
+              <div class="step-nav">
+                <button type="button" class="btn btn-outline-dark" onclick="nextStep(1)">← Back</button>
+                <button type="button" class="btn btn-primary" onclick="nextStep(3)">Next: Account Setup →</button>
+              </div>
+            </div>
+
+            <!-- Step 3: Account -->
+            <div class="form-step" id="step3">
+              <h4 style="font-family:var(--font-display);font-size:18px;margin-bottom:20px;color:var(--navy)">Step 3 — Create Your Account</h4>
+              <div class="form-group"><label>Choose a Username *</label><input type="text" placeholder="abebe_tadesse" required/></div>
+              <div class="form-group"><label>Password *</label><input type="password" placeholder="Minimum 8 characters" required/></div>
+              <div class="form-group"><label>Confirm Password *</label><input type="password" placeholder="Repeat your password" required/></div>
+              <div style="background:var(--light-bg);border-radius:8px;padding:16px;margin-bottom:20px">
+                <label style="display:flex;gap:10px;align-items:flex-start;cursor:pointer;font-size:13px;color:#4a5a70">
+                  <input type="checkbox" style="margin-top:2px;flex-shrink:0" required/>
+                  <span>I agree to the ECA Terms of Membership and Privacy Policy. I confirm that the information I have provided is accurate.</span>
+                </label>
+              </div>
+              <div style="background:var(--light-bg);border-radius:8px;padding:16px;margin-bottom:24px">
+                <label style="display:flex;gap:10px;align-items:flex-start;cursor:pointer;font-size:13px;color:#4a5a70">
+                  <input type="checkbox" style="margin-top:2px;flex-shrink:0"/>
+                  <span>Send me the ECA maritime newsletter and event notifications (optional).</span>
+                </label>
+              </div>
+              <div class="step-nav">
+                <button type="button" class="btn btn-outline-dark" onclick="nextStep(2)">← Back</button>
+                <button type="button" class="btn btn-primary" onclick="submitForm()" style="min-width:160px">Create My Account ✓</button>
+              </div>
+            </div>
+
+          </form>
+
+          <!-- Success Screen -->
+          <div class="success-screen" id="successScreen">
+            <div class="success-icon">🎉</div>
+            <h3>Welcome to ECA!</h3>
+            <p>Your membership account has been created. Check your email for a confirmation link, then log in to access all your member benefits.</p>
+            <a href="../index.html" class="btn btn-primary btn-lg">Go to Homepage</a>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container footer-grid">
+    <div class="footer-col"><div class="footer-logo">⚓ ECA</div><p>Ethiopian Cadet Association — Maritime Excellence.</p></div>
+    <div class="footer-col"><h4>Quick Links</h4><ul><li><a href="about.html">About</a></li><li><a href="training.html">Training</a></li><li><a href="courses.html">Courses</a></li><li><a href="financial.html">Financial Support</a></li></ul></div>
+    <div class="footer-col"><h4>Resources</h4><ul><li><a href="news.html">News</a></li><li><a href="events.html">Events</a></li><li><a href="contact.html">Contact</a></li><li><a href="register.html">Membership</a></li></ul></div>
+    <div class="footer-col"><h4>Contact</h4><p>📧 info@ethiopiancadet.org</p><p>📞 +251 911 000 000</p><p>📍 Addis Ababa, Ethiopia</p></div>
+  </div>
+  <div class="footer-bottom"><p>© 2025 Ethiopian Cadet Association. All rights reserved.</p></div>
+</footer>
+<script src="../js/main.js"></script>
+<script>
+let currentStep=1;
+function selectType(btn,type){
+  document.querySelectorAll('.mtype-btn').forEach(b=>b.classList.remove('selected'));
+  btn.classList.add('selected');
+}
+function nextStep(n){
+  document.getElementById('step'+currentStep).classList.remove('active');
+  document.getElementById('dot'+currentStep).classList.remove('active');
+  document.getElementById('dot'+currentStep).classList.add('done');
+  if(currentStep<3)document.getElementById('line'+currentStep).classList.add('done');
+  currentStep=n;
+  document.getElementById('step'+currentStep).classList.add('active');
+  document.getElementById('dot'+currentStep).classList.add('active');
+  document.getElementById('dot'+currentStep).classList.remove('done');
+  document.querySelector('.form-wrapper').scrollIntoView({behavior:'smooth',block:'start'});
+}
+function submitForm(){
+  document.getElementById('step3').classList.remove('active');
+  document.getElementById('dot3').classList.remove('active');
+  document.getElementById('dot3').classList.add('done');
+  document.getElementById('line2').classList.add('done');
+  document.getElementById('successScreen').style.display='block';
+  document.querySelector('.step-indicator').style.display='none';
+  document.getElementById('memberTypes').style.display='none';
+  document.querySelector('.form-title').style.display='none';
+  document.querySelector('.form-subtitle').style.display='none';
+  document.querySelector('.form-wrapper').scrollIntoView({behavior:'smooth',block:'start'});
+}
+</script>
+</body>
+</html>

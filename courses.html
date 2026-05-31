@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Courses & Certifications – Ethiopian Cadet Association</title>
+  <link rel="stylesheet" href="../css/style.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Barlow:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    /* ---- COURSES PAGE SPECIFIC ---- */
+    .courses-tabs { display:flex; gap:8px; flex-wrap:wrap; margin-bottom:40px; }
+    .tab-btn {
+      padding:10px 22px; border-radius:30px; border:2px solid #d8dde6;
+      background:white; font-family:var(--font-body); font-size:14px;
+      font-weight:600; cursor:pointer; transition:var(--transition); color:var(--navy);
+    }
+    .tab-btn.active, .tab-btn:hover { background:var(--navy); color:var(--gold); border-color:var(--navy); }
+
+    .courses-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:24px; }
+    .course-card {
+      background:white; border-radius:12px; overflow:hidden;
+      box-shadow:0 4px 20px rgba(10,22,40,0.08); transition:var(--transition);
+      border:1px solid rgba(10,22,40,0.06);
+    }
+    .course-card:hover { transform:translateY(-5px); box-shadow:0 12px 36px rgba(10,22,40,0.14); }
+    .course-thumb {
+      height:160px; background:linear-gradient(135deg,var(--navy),var(--blue));
+      display:flex; align-items:center; justify-content:center;
+      font-size:52px; position:relative;
+    }
+    .course-level {
+      position:absolute; top:12px; right:12px;
+      background:var(--gold); color:var(--navy);
+      font-size:11px; font-weight:700; padding:4px 10px;
+      border-radius:20px; letter-spacing:0.5px;
+    }
+    .course-body { padding:22px; }
+    .course-instructor {
+      display:flex; align-items:center; gap:10px; margin-bottom:14px;
+    }
+    .instructor-avatar {
+      width:36px; height:36px; border-radius:50%;
+      background:var(--light-bg); border:2px solid var(--gold);
+      display:flex; align-items:center; justify-content:center; font-size:16px;
+    }
+    .instructor-name { font-size:13px; font-weight:600; color:var(--navy); }
+    .instructor-title { font-size:11px; color:var(--gray); }
+    .course-card h3 { font-family:var(--font-display); font-size:17px; margin-bottom:8px; line-height:1.3; }
+    .course-card p { font-size:13px; color:#5a6a7a; margin-bottom:16px; line-height:1.5; }
+    .course-meta { display:flex; gap:14px; font-size:12px; color:var(--gray); margin-bottom:16px; }
+    .course-meta span::before { margin-right:4px; }
+    .course-footer {
+      display:flex; align-items:center; justify-content:space-between;
+      padding-top:14px; border-top:1px solid #eef0f4;
+    }
+    .course-price { font-family:var(--font-display); font-size:18px; font-weight:700; color:var(--navy); }
+    .course-price.free { color:#2a7a4a; }
+    .enroll-btn {
+      padding:8px 18px; background:var(--navy); color:var(--gold);
+      border-radius:6px; font-size:13px; font-weight:700; transition:var(--transition);
+    }
+    .enroll-btn:hover { background:var(--blue); }
+
+    /* Expert post section */
+    .expert-banner {
+      background:linear-gradient(135deg,var(--navy),var(--blue));
+      border-radius:14px; padding:40px 48px;
+      display:flex; align-items:center; justify-content:space-between;
+      gap:32px; margin-bottom:56px; color:white;
+    }
+    .expert-banner h3 { font-family:var(--font-display); font-size:26px; color:var(--gold); margin-bottom:10px; }
+    .expert-banner p { color:var(--gray); font-size:15px; max-width:500px; }
+    .expert-stats { display:flex; gap:32px; flex-shrink:0; }
+    .ex-stat { text-align:center; }
+    .ex-stat-num { font-family:var(--font-display); font-size:32px; color:var(--gold); display:block; font-weight:900; }
+    .ex-stat-label { font-size:12px; color:var(--gray); letter-spacing:1px; }
+
+    /* Certifications table */
+    .cert-section { margin-top:60px; }
+    .cert-grid { display:grid; grid-template-columns:repeat(2,1fr); gap:20px; }
+    .cert-card {
+      background:var(--light-bg); border-radius:10px; padding:26px;
+      border-left:4px solid var(--gold); transition:var(--transition);
+    }
+    .cert-card:hover { background:white; box-shadow:var(--shadow); }
+    .cert-card h4 { font-family:var(--font-display); font-size:18px; margin-bottom:6px; }
+    .cert-card .cert-code { font-size:12px; font-weight:700; color:var(--gold); letter-spacing:1px; margin-bottom:10px; }
+    .cert-card p { font-size:13px; color:#5a6a7a; }
+    .cert-badge { display:inline-block; padding:3px 10px; border-radius:20px; font-size:11px; font-weight:700; margin-top:10px; }
+    .badge-required { background:#fef3cd; color:#8a6d00; }
+    .badge-advanced { background:#d4edda; color:#155724; }
+    .badge-optional { background:#d1ecf1; color:#0c5460; }
+
+    @media(max-width:900px){
+      .courses-grid{grid-template-columns:1fr 1fr;}
+      .expert-banner{flex-direction:column; gap:24px;}
+      .cert-grid{grid-template-columns:1fr;}
+    }
+    @media(max-width:600px){
+      .courses-grid{grid-template-columns:1fr;}
+      .expert-stats{gap:16px;}
+    }
+  </style>
+</head>
+<body>
+<nav class="navbar" id="navbar">
+  <div class="nav-container">
+    <a href="../index.html" class="logo">
+      <span class="logo-icon">⚓</span>
+      <div class="logo-text"><span class="logo-main">ECA</span><span class="logo-sub">Ethiopian Cadet Association</span></div>
+    </a>
+    <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="../index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="training.html">Training</a></li>
+      <li><a href="courses.html" class="active">Courses</a></li>
+      <li><a href="financial.html">Financial Support</a></li>
+      <li><a href="news.html">News</a></li>
+      <li><a href="events.html">Events</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li><a href="register.html" class="nav-cta">Join Us</a></li>
+    </ul>
+  </div>
+</nav>
+
+<section class="page-hero">
+  <div class="container">
+    <span class="page-hero-tag">Learn from the Best</span>
+    <h1>Courses & Certifications</h1>
+    <p>Online marine engineering courses taught by senior maritime experts. Earn internationally recognised certificates and advance your career.</p>
+  </div>
+</section>
+
+<section class="page-content">
+  <div class="container">
+
+    <!-- Expert Invite Banner -->
+    <div class="expert-banner fade-in">
+      <div>
+        <h3>Are You a Senior Marine Engineer or Expert?</h3>
+        <p>Share your knowledge with the next generation. Post courses, upload video lectures, share technical content, and mentor cadets across the globe. Join our growing expert faculty.</p>
+        <a href="register.html?role=expert" class="btn btn-primary" style="margin-top:18px;">Apply to Become an Instructor</a>
+      </div>
+      <div class="expert-stats">
+        <div class="ex-stat"><span class="ex-stat-num">42</span><span class="ex-stat-label">Expert Instructors</span></div>
+        <div class="ex-stat"><span class="ex-stat-num">120+</span><span class="ex-stat-label">Courses</span></div>
+        <div class="ex-stat"><span class="ex-stat-num">1,800+</span><span class="ex-stat-label">Enrolled Cadets</span></div>
+      </div>
+    </div>
+
+    <!-- Filter Tabs -->
+    <div class="courses-tabs fade-in">
+      <button class="tab-btn active" onclick="filterCourses('all',this)">All Courses</button>
+      <button class="tab-btn" onclick="filterCourses('engine',this)">Marine Engineering</button>
+      <button class="tab-btn" onclick="filterCourses('safety',this)">Safety & STCW</button>
+      <button class="tab-btn" onclick="filterCourses('navigation',this)">Navigation</button>
+      <button class="tab-btn" onclick="filterCourses('electrical',this)">Electro-Technical</button>
+      <button class="tab-btn" onclick="filterCourses('management',this)">Management Level</button>
+      <button class="tab-btn" onclick="filterCourses('free',this)">Free Courses</button>
+    </div>
+
+    <!-- Courses Grid -->
+    <div class="courses-grid" id="coursesGrid">
+
+      <div class="course-card fade-in" data-category="engine">
+        <div class="course-thumb">🔧<span class="course-level">Operational</span></div>
+        <div class="course-body">
+          <div class="course-instructor">
+            <div class="instructor-avatar">👨‍✈️</div>
+            <div><div class="instructor-name">Chief Eng. Abebe Tadesse</div><div class="instructor-title">Chief Engineer, 20 yrs exp.</div></div>
+          </div>
+          <h3>Main Engine Operation & Maintenance</h3>
+          <p>Complete guide to two-stroke and four-stroke main engines, fuel systems, and scheduled maintenance routines.</p>
+          <div class="course-meta"><span>📹 24 Videos</span><span>⏱ 18 hrs</span><span>🎓 Certificate</span></div>
+          <div class="course-footer"><span class="course-price">1,200 ETB</span><a href="#" class="enroll-btn">Enroll Now</a></div>
+        </div>
+      </div>
+
+      <div class="course-card fade-in" data-category="safety">
+        <div class="course-thumb">🦺<span class="course-level">Mandatory</span></div>
+        <div class="course-body">
+          <div class="course-instructor">
+            <div class="instructor-avatar">👩‍✈️</div>
+            <div><div class="instructor-name">Capt. Tigist Haile</div><div class="instructor-title">Maritime Safety Inspector</div></div>
+          </div>
+          <h3>STCW Basic Safety Training (BST)</h3>
+          <p>Internationally required personal survival, fire prevention, first aid, and personal safety training for all seafarers.</p>
+          <div class="course-meta"><span>📹 16 Videos</span><span>⏱ 12 hrs</span><span>🎓 STCW Certificate</span></div>
+          <div class="course-footer"><span class="course-price free">FREE</span><a href="#" class="enroll-btn">Enroll Now</a></div>
+        </div>
+      </div>
+
+      <div class="course-card fade-in" data-category="electrical">
+        <div class="course-thumb">⚡<span class="course-level">Advanced</span></div>
+        <div class="course-body">
+          <div class="course-instructor">
+            <div class="instructor-avatar">🧑‍🔧</div>
+            <div><div class="instructor-name">ETO Samuel Bekele</div><div class="instructor-title">Electro-Technical Officer</div></div>
+          </div>
+          <h3>Ship Electrical Systems & Automation</h3>
+          <p>Covers switchboards, generators, automation control systems, and fault-finding techniques used on modern vessels.</p>
+          <div class="course-meta"><span>📹 30 Videos</span><span>⏱ 22 hrs</span><span>🎓 Certificate</span></div>
+          <div class="course-footer"><span class="course-price">1,800 ETB</span><a href="#" class="enroll-btn">Enroll Now</a></div>
+        </div>
+      </div>
+
+      <div class="course-card fade-in" data-category="engine">
+        <div class="course-thumb">🛢️<span class="course-level">Operational</span></div>
+        <div class="course-body">
+          <div class="course-instructor">
+            <div class="instructor-avatar">👨‍🔬</div>
+            <div><div class="instructor-name">2nd Eng. Daniel Girma</div><div class="instructor-title">Second Engineer, Tanker Specialist</div></div>
+          </div>
+          <h3>Boilers, Auxiliary Machinery & Pumps</h3>
+          <p>Comprehensive study of auxiliary boilers, feed water systems, cargo pumps, and ballast systems on tankers and bulk carriers.</p>
+          <div class="course-meta"><span>📹 20 Videos</span><span>⏱ 15 hrs</span><span>🎓 Certificate</span></div>
+          <div class="course-footer"><span class="course-price">1,500 ETB</span><a href="#" class="enroll-btn">Enroll Now</a></div>
+        </div>
+      </div>
+
+      <div class="course-card fade-in" data-category="management">
+        <div class="course-thumb">📋<span class="course-level">Management</span></div>
+        <div class="course-body">
+          <div class="course-instructor">
+            <div class="instructor-avatar">👨‍💼</div>
+            <div><div class="instructor-name">Chief Eng. Mulugeta Worku</div><div class="instructor-title">Superintendent Engineer</div></div>
+          </div>
+          <h3>Engine Room Resource Management (ERM)</h3>
+          <p>Leadership, communication, decision-making, and crew management skills for engineers aspiring to Chief Engineer rank.</p>
+          <div class="course-meta"><span>📹 18 Videos</span><span>⏱ 14 hrs</span><span>🎓 STCW Certificate</span></div>
+          <div class="course-footer"><span class="course-price">2,000 ETB</span><a href="#" class="enroll-btn">Enroll Now</a></div>
+        </div>
+      </div>
+
+      <div class="course-card fade-in" data-category="safety free">
+        <div class="course-thumb">🔥<span class="course-level">Mandatory</span></div>
+        <div class="course-body">
+          <div class="course-instructor">
+            <div class="instructor-avatar">🧑‍🚒</div>
+            <div><div class="instructor-name">Safety Officer Yonas Mesfin</div><div class="instructor-title">STCW Trainer, 15 yrs</div></div>
+          </div>
+          <h3>Advanced Fire Fighting (AFF)</h3>
+          <p>STCW VI/3 compliant advanced fire fighting techniques, fire plans, and coordination of fire-fighting operations on board ships.</p>
+          <div class="course-meta"><span>📹 14 Videos</span><span>⏱ 10 hrs</span><span>🎓 STCW Certificate</span></div>
+          <div class="course-footer"><span class="course-price free">FREE</span><a href="#" class="enroll-btn">Enroll Now</a></div>
+        </div>
+      </div>
+
+    </div><!-- /courses-grid -->
+
+    <!-- Certifications Section -->
+    <div class="cert-section fade-in">
+      <span class="section-tag">Internationally Recognised</span>
+      <h2 style="font-family:var(--font-display);font-size:36px;margin-bottom:8px;">Certifications We Support</h2>
+      <p style="color:#5a6a7a;margin-bottom:36px;">These certificates are required or recommended for Ethiopian marine engineers at different career stages.</p>
+      <div class="cert-grid">
+        <div class="cert-card">
+          <div class="cert-code">STCW II/1 — COC</div>
+          <h4>Certificate of Competency (Officer of the Watch)</h4>
+          <p>The foundational certificate required to serve as a watchkeeping officer on any vessel globally.</p>
+          <span class="cert-badge badge-required">Required</span>
+        </div>
+        <div class="cert-card">
+          <div class="cert-code">STCW III/1 — ENG OOW</div>
+          <h4>Engineer Officer of the Watch</h4>
+          <p>Required for all marine engineers to stand watches in the engine room on seagoing vessels.</p>
+          <span class="cert-badge badge-required">Required</span>
+        </div>
+        <div class="cert-card">
+          <div class="cert-code">STCW VI/1 — BST</div>
+          <h4>Basic Safety Training</h4>
+          <p>Personal survival, fire prevention, first aid, and personal safety — mandatory for every seafarer.</p>
+          <span class="cert-badge badge-required">Required</span>
+        </div>
+        <div class="cert-card">
+          <div class="cert-code">STCW III/2 — CHIEF ENG</div>
+          <h4>Chief Engineer Certificate</h4>
+          <p>Management-level certification for engineers aspiring to the highest engine department rank.</p>
+          <span class="cert-badge badge-advanced">Advanced</span>
+        </div>
+        <div class="cert-card">
+          <div class="cert-code">STCW VI/3 — AFF</div>
+          <h4>Advanced Fire Fighting</h4>
+          <p>Required for officers designated to take charge of fire-fighting operations aboard ships.</p>
+          <span class="cert-badge badge-required">Required for Officers</span>
+        </div>
+        <div class="cert-card">
+          <div class="cert-code">IGF CODE</div>
+          <h4>Gas Fuelled Ships Certificate</h4>
+          <p>Specialist certificate for engineers working on LNG/LPG carriers and gas-fuelled vessels.</p>
+          <span class="cert-badge badge-optional">Specialist</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section class="cta-section">
+  <div class="container">
+    <h2>Start Learning Today</h2>
+    <p>Access expert-taught courses, earn globally recognised certificates, and advance your maritime career from anywhere.</p>
+    <a href="register.html" class="btn btn-primary btn-lg">Create Free Account</a>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container footer-grid">
+    <div class="footer-col"><div class="footer-logo">⚓ ECA</div><p>Ethiopian Cadet Association — Maritime Excellence.</p></div>
+    <div class="footer-col"><h4>Quick Links</h4><ul><li><a href="about.html">About Us</a></li><li><a href="training.html">Training</a></li><li><a href="courses.html">Courses</a></li><li><a href="financial.html">Financial Support</a></li></ul></div>
+    <div class="footer-col"><h4>Resources</h4><ul><li><a href="news.html">News</a></li><li><a href="events.html">Events</a></li><li><a href="contact.html">Contact</a></li><li><a href="register.html">Membership</a></li></ul></div>
+    <div class="footer-col"><h4>Contact</h4><p>📧 info@ethiopiancadet.org</p><p>📞 +251 911 000 000</p><p>📍 Addis Ababa, Ethiopia</p></div>
+  </div>
+  <div class="footer-bottom"><p>© 2025 Ethiopian Cadet Association. All rights reserved.</p></div>
+</footer>
+
+<script src="../js/main.js"></script>
+<script>
+function filterCourses(cat, btn) {
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+  document.querySelectorAll('.course-card').forEach(card => {
+    const cats = card.dataset.category || '';
+    if (cat === 'all' || cats.includes(cat)) {
+      card.style.display = '';
+    } else {
+      card.style.display = 'none';
+    }
+  });
+}
+</script>
+</body>
+</html>

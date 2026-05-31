@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Training Programs – Ethiopian Cadet Association</title>
+  <link rel="stylesheet" href="../css/style.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Barlow:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    .training-tabs{display:flex;gap:0;border-bottom:2px solid #e0e4ec;margin-bottom:50px;overflow-x:auto}
+    .training-tab{padding:16px 32px;font-family:var(--font-body);font-size:15px;font-weight:600;background:none;border:none;cursor:pointer;color:#6a7a8a;border-bottom:3px solid transparent;margin-bottom:-2px;transition:var(--transition);white-space:nowrap}
+    .training-tab.active,.training-tab:hover{color:var(--navy);border-bottom-color:var(--gold)}
+    .t-panel{display:none}.t-panel.active{display:block}
+    .program-hero{background:linear-gradient(135deg,var(--navy),var(--blue));border-radius:14px;padding:48px;color:white;margin-bottom:40px;display:flex;gap:40px;align-items:center}
+    .program-hero-text h3{font-family:var(--font-display);font-size:30px;color:var(--gold);margin-bottom:12px}
+    .program-hero-text p{color:var(--gray);font-size:15px;line-height:1.7;max-width:560px}
+    .program-hero-stats{display:flex;flex-direction:column;gap:16px;flex-shrink:0}
+    .ph-stat{background:rgba(255,255,255,0.07);border:1px solid rgba(200,168,75,0.2);border-radius:10px;padding:16px 24px;text-align:center;min-width:130px}
+    .ph-stat-num{font-family:var(--font-display);font-size:28px;font-weight:900;color:var(--gold);display:block}
+    .ph-stat-label{font-size:11px;color:var(--gray);letter-spacing:1px;text-transform:uppercase}
+    .modules-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:20px;margin-bottom:40px}
+    .module-card{background:var(--light-bg);border-radius:10px;padding:26px;border-left:4px solid var(--gold);transition:var(--transition)}
+    .module-card:hover{background:white;box-shadow:var(--shadow);transform:translateX(4px)}
+    .module-num{font-size:11px;font-weight:700;letter-spacing:2px;color:var(--gold);text-transform:uppercase;margin-bottom:8px}
+    .module-card h4{font-family:var(--font-display);font-size:18px;margin-bottom:8px;color:var(--navy)}
+    .module-card p{font-size:13px;color:#5a6a7a;line-height:1.6}
+    .module-card .duration{font-size:12px;font-weight:600;color:var(--blue);margin-top:10px}
+    .institutions-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:40px}
+    .inst-card{background:white;border-radius:10px;padding:24px;text-align:center;box-shadow:0 3px 16px rgba(10,22,40,0.07);border:1px solid rgba(10,22,40,0.06);transition:var(--transition)}
+    .inst-card:hover{transform:translateY(-4px);box-shadow:var(--shadow)}
+    .inst-icon{font-size:36px;margin-bottom:12px}
+    .inst-card h4{font-family:var(--font-display);font-size:16px;margin-bottom:6px;color:var(--navy)}
+    .inst-card p{font-size:12px;color:var(--gray)}
+    .inst-country{display:inline-block;margin-top:8px;padding:3px 10px;background:var(--light-bg);border-radius:12px;font-size:11px;font-weight:700;color:var(--navy)}
+    .apply-steps{display:flex;flex-direction:column;gap:0;margin-top:40px}
+    .apply-step{display:flex;gap:24px;align-items:flex-start;padding:28px 0;border-bottom:1px solid #e8ecf0;position:relative}
+    .apply-step:last-child{border-bottom:none}
+    .step-num{width:48px;height:48px;border-radius:50%;background:var(--navy);color:var(--gold);display:flex;align-items:center;justify-content:center;font-family:var(--font-display);font-size:20px;font-weight:900;flex-shrink:0}
+    .step-body h4{font-family:var(--font-display);font-size:18px;margin-bottom:6px;color:var(--navy)}
+    .step-body p{font-size:14px;color:#5a6a7a}
+    @media(max-width:900px){.program-hero{flex-direction:column}.program-hero-stats{flex-direction:row;flex-wrap:wrap}.modules-grid{grid-template-columns:1fr}.institutions-grid{grid-template-columns:1fr 1fr}}
+    @media(max-width:600px){.institutions-grid{grid-template-columns:1fr}}
+  </style>
+</head>
+<body>
+<nav class="navbar" id="navbar">
+  <div class="nav-container">
+    <a href="../index.html" class="logo"><span class="logo-icon">⚓</span><div class="logo-text"><span class="logo-main">ECA</span><span class="logo-sub">Ethiopian Cadet Association</span></div></a>
+    <button class="hamburger" id="hamburger"><span></span><span></span><span></span></button>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="../index.html">Home</a></li><li><a href="about.html">About</a></li>
+      <li><a href="training.html" class="active">Training</a></li><li><a href="courses.html">Courses</a></li>
+      <li><a href="financial.html">Financial Support</a></li><li><a href="news.html">News</a></li>
+      <li><a href="events.html">Events</a></li><li><a href="contact.html">Contact</a></li>
+      <li><a href="register.html" class="nav-cta">Join Us</a></li>
+    </ul>
+  </div>
+</nav>
+
+<section class="page-hero">
+  <div class="container">
+    <span class="page-hero-tag">Build Your Foundation</span>
+    <h1>Cadet Training Programs</h1>
+    <p>Structured pathways from first sea contract to senior officer rank — covering pre-sea preparation, post-sea advancement, and everything in between.</p>
+  </div>
+</section>
+
+<section class="page-content">
+  <div class="container">
+
+    <div class="training-tabs">
+      <button class="training-tab active" onclick="showTab('presea',this)">🌊 Pre-Sea Training</button>
+      <button class="training-tab" onclick="showTab('postsea',this)">⚙️ Post-Sea Training</button>
+      <button class="training-tab" onclick="showTab('institutions',this)">🏛️ Partner Institutions</button>
+      <button class="training-tab" onclick="showTab('apply',this)">📋 How to Apply</button>
+    </div>
+
+    <!-- PRE-SEA -->
+    <div class="t-panel active" id="presea">
+      <div class="program-hero fade-in">
+        <div class="program-hero-text">
+          <h3>Pre-Sea Training Programme</h3>
+          <p>Designed for aspiring marine engineers with no prior sea experience. This programme builds the foundational knowledge, safety awareness, and practical skills required before boarding a vessel for the first time. Completing pre-sea training is a mandatory step toward your first contract.</p>
+          <a href="register.html" class="btn btn-primary" style="margin-top:20px;">Apply for Pre-Sea Training</a>
+        </div>
+        <div class="program-hero-stats">
+          <div class="ph-stat"><span class="ph-stat-num">6–12</span><span class="ph-stat-label">Months Duration</span></div>
+          <div class="ph-stat"><span class="ph-stat-num">STCW</span><span class="ph-stat-label">Certified</span></div>
+          <div class="ph-stat"><span class="ph-stat-num">100%</span><span class="ph-stat-label">Job-Ready</span></div>
+        </div>
+      </div>
+      <span class="section-tag">Course Modules</span>
+      <h2 style="font-family:var(--font-display);font-size:32px;margin-bottom:24px;">What You Will Learn</h2>
+      <div class="modules-grid fade-in">
+        <div class="module-card"><div class="module-num">Module 01</div><h4>Basic Safety Training (STCW VI/1)</h4><p>Personal survival techniques, fire prevention and fire fighting, elementary first aid, and personal safety and social responsibilities.</p><div class="duration">⏱ 4 weeks</div></div>
+        <div class="module-card"><div class="module-num">Module 02</div><h4>Marine Engineering Fundamentals</h4><p>Introduction to diesel engines, boilers, pumps, piping systems, and basic ship structure for engine department cadets.</p><div class="duration">⏱ 6 weeks</div></div>
+        <div class="module-card"><div class="module-num">Module 03</div><h4>Engine Room Watchkeeping</h4><p>Principles of watchkeeping at sea, standing orders, logbook keeping, and communication between engine and bridge departments.</p><div class="duration">⏱ 3 weeks</div></div>
+        <div class="module-card"><div class="module-num">Module 04</div><h4>Ship Stability & Buoyancy</h4><p>Basic naval architecture, stability principles, load line regulations, and hull inspection essentials for engine officers.</p><div class="duration">⏱ 2 weeks</div></div>
+        <div class="module-card"><div class="module-num">Module 05</div><h4>Maritime Law & Regulations</h4><p>SOLAS, MARPOL, MLC 2006 seafarer rights, flag state regulations, and port state control procedures.</p><div class="duration">⏱ 2 weeks</div></div>
+        <div class="module-card"><div class="module-num">Module 06</div><h4>Engine Room Simulator Practice</h4><p>Hands-on simulator training covering normal operations, emergency scenarios, and fault-finding in a controlled environment.</p><div class="duration">⏱ 3 weeks</div></div>
+      </div>
+    </div>
+
+    <!-- POST-SEA -->
+    <div class="t-panel" id="postsea">
+      <div class="program-hero fade-in">
+        <div class="program-hero-text">
+          <h3>Post-Sea Training & Upgrading</h3>
+          <p>For engineers already serving at sea who want to upgrade their COC, attain new endorsements, or prepare for management-level responsibilities. Post-sea training is typically completed during your shore leave period and feeds directly into higher rank certification.</p>
+          <a href="register.html" class="btn btn-primary" style="margin-top:20px;">Enroll in Post-Sea Training</a>
+        </div>
+        <div class="program-hero-stats">
+          <div class="ph-stat"><span class="ph-stat-num">4–16</span><span class="ph-stat-label">Weeks Duration</span></div>
+          <div class="ph-stat"><span class="ph-stat-num">COC</span><span class="ph-stat-label">Upgrade Focus</span></div>
+          <div class="ph-stat"><span class="ph-stat-num">IMO</span><span class="ph-stat-label">Recognised</span></div>
+        </div>
+      </div>
+      <span class="section-tag">Upgrade Pathways</span>
+      <h2 style="font-family:var(--font-display);font-size:32px;margin-bottom:24px;">Post-Sea Programmes</h2>
+      <div class="modules-grid fade-in">
+        <div class="module-card"><div class="module-num">Upgrade 01</div><h4>Officer of the Watch → 3rd Engineer</h4><p>Transition from watchkeeping duties to independent operation. Covers advanced machinery systems, fault diagnosis, and management basics.</p><div class="duration">⏱ 8 weeks</div></div>
+        <div class="module-card"><div class="module-num">Upgrade 02</div><h4>3rd Engineer → 2nd Engineer</h4><p>Advanced maintenance planning, crew supervision, technical reporting, and preparation for STCW III/1 advanced endorsement exam.</p><div class="duration">⏱ 10 weeks</div></div>
+        <div class="module-card"><div class="module-num">Upgrade 03</div><h4>2nd Engineer → Chief Engineer</h4><p>Management Level Certificate (STCW III/2) preparation. Leadership, ERM, technical management, and Chief Engineer exam coaching.</p><div class="duration">⏱ 16 weeks</div></div>
+        <div class="module-card"><div class="module-num">Upgrade 04</div><h4>Engine Room Resource Management (ERM)</h4><p>Mandatory for management level officers. Team leadership, decision-making, workload management, and effective communication at sea.</p><div class="duration">⏱ 5 days</div></div>
+        <div class="module-card"><div class="module-num">Upgrade 05</div><h4>Tanker & Gas Carrier Specialist</h4><p>Endorsements for working on oil tankers, chemical tankers, and gas carriers per STCW VI/1, V/1-1, and V/1-2 requirements.</p><div class="duration">⏱ 2–4 weeks</div></div>
+        <div class="module-card"><div class="module-num">Upgrade 06</div><h4>GMDSS & Electronic Navigation</h4><p>General Operator Certificate for Global Maritime Distress and Safety System, AIS operations, and bridge communication protocols.</p><div class="duration">⏱ 3 weeks</div></div>
+      </div>
+    </div>
+
+    <!-- INSTITUTIONS -->
+    <div class="t-panel" id="institutions">
+      <span class="section-tag">Accredited Partners</span>
+      <h2 style="font-family:var(--font-display);font-size:32px;margin-bottom:10px;">Our Partner Institutions</h2>
+      <p style="color:#5a6a7a;margin-bottom:36px;">ECA works with accredited maritime training institutions in Ethiopia and internationally to connect cadets with quality education.</p>
+      <div class="institutions-grid fade-in">
+        <div class="inst-card"><div class="inst-icon">🏫</div><h4>Addis Ababa Maritime Training Institute</h4><p>Ethiopia's primary maritime training centre offering STCW and pre-sea programmes.</p><span class="inst-country">🇪🇹 Ethiopia</span></div>
+        <div class="inst-card"><div class="inst-icon">🚢</div><h4>Djibouti Maritime Training Academy</h4><p>Regional partner offering advanced simulator and tanker endorsement training.</p><span class="inst-country">🇩🇯 Djibouti</span></div>
+        <div class="inst-card"><div class="inst-icon">🌏</div><h4>Philippines Maritime University (PMU)</h4><p>World-class STCW training programmes with full accreditation from IMO white list.</p><span class="inst-country">🇵🇭 Philippines</span></div>
+        <div class="inst-card"><div class="inst-icon">⚙️</div><h4>Korea Maritime & Ocean University</h4><p>Exchange programme partner providing advanced engine room and automation training.</p><span class="inst-country">🇰🇷 South Korea</span></div>
+        <div class="inst-card"><div class="inst-icon">🎓</div><h4>World Maritime University (WMU)</h4><p>IMO-established university in Sweden offering postgraduate maritime programmes.</p><span class="inst-country">🇸🇪 Sweden</span></div>
+        <div class="inst-card"><div class="inst-icon">🌍</div><h4>Egyptian Maritime Academy</h4><p>Regional partner for Arabic-speaking cadets and Red Sea focused training.</p><span class="inst-country">🇪🇬 Egypt</span></div>
+      </div>
+    </div>
+
+    <!-- HOW TO APPLY -->
+    <div class="t-panel" id="apply">
+      <span class="section-tag">Step by Step</span>
+      <h2 style="font-family:var(--font-display);font-size:32px;margin-bottom:10px;">How to Apply for Training</h2>
+      <p style="color:#5a6a7a;margin-bottom:36px;">Follow these steps to enroll in a training programme through ECA.</p>
+      <div class="apply-steps fade-in">
+        <div class="apply-step"><div class="step-num">1</div><div class="step-body"><h4>Create an ECA Membership Account</h4><p>Register on the ECA website as a cadet member. Membership is free and gives you access to all training applications, scholarships, and the job board.</p></div></div>
+        <div class="apply-step"><div class="step-num">2</div><div class="step-body"><h4>Complete Your Profile</h4><p>Fill in your educational background, sea service record (if any), and upload your identification documents and academic certificates.</p></div></div>
+        <div class="apply-step"><div class="step-num">3</div><div class="step-body"><h4>Choose Your Programme</h4><p>Browse the Pre-Sea or Post-Sea training options, select the programme that matches your current level, and check intake dates and availability.</p></div></div>
+        <div class="apply-step"><div class="step-num">4</div><div class="step-body"><h4>Submit Application & Documents</h4><p>Submit your programme application with all required supporting documents. ECA will review and confirm eligibility within 5–7 working days.</p></div></div>
+        <div class="apply-step"><div class="step-num">5</div><div class="step-body"><h4>Receive Placement Confirmation</h4><p>Once approved, you will receive a placement letter from ECA and the partner institution, including start dates and reporting instructions.</p></div></div>
+        <div class="apply-step"><div class="step-num">6</div><div class="step-body"><h4>Start Training & Track Progress</h4><p>Log your progress in the ECA Career Tracker on the Financial Support page. ECA mentors are available throughout your training for guidance.</p></div></div>
+      </div>
+      <div style="text-align:center;margin-top:40px"><a href="register.html" class="btn btn-primary btn-lg">Start Your Application</a></div>
+    </div>
+
+  </div>
+</section>
+
+<section class="cta-section">
+  <div class="container">
+    <h2>Ready to Begin Your Maritime Career?</h2>
+    <p>Join ECA today and get access to training programmes, expert mentors, and a network of Ethiopian maritime professionals.</p>
+    <a href="register.html" class="btn btn-primary btn-lg">Join ECA — It's Free</a>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container footer-grid">
+    <div class="footer-col"><div class="footer-logo">⚓ ECA</div><p>Ethiopian Cadet Association — Maritime Excellence.</p></div>
+    <div class="footer-col"><h4>Quick Links</h4><ul><li><a href="about.html">About</a></li><li><a href="training.html">Training</a></li><li><a href="courses.html">Courses</a></li><li><a href="financial.html">Financial Support</a></li></ul></div>
+    <div class="footer-col"><h4>Resources</h4><ul><li><a href="news.html">News</a></li><li><a href="events.html">Events</a></li><li><a href="contact.html">Contact</a></li><li><a href="register.html">Membership</a></li></ul></div>
+    <div class="footer-col"><h4>Contact</h4><p>📧 info@ethiopiancadet.org</p><p>📞 +251 911 000 000</p><p>📍 Addis Ababa, Ethiopia</p></div>
+  </div>
+  <div class="footer-bottom"><p>© 2025 Ethiopian Cadet Association. All rights reserved.</p></div>
+</footer>
+<script src="../js/main.js"></script>
+<script>
+function showTab(id,btn){
+  document.querySelectorAll('.training-tab').forEach(b=>b.classList.remove('active'));
+  document.querySelectorAll('.t-panel').forEach(p=>p.classList.remove('active'));
+  btn.classList.add('active');
+  document.getElementById(id).classList.add('active');
+}
+</script>
+</body>
+</html>
